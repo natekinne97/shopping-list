@@ -12,13 +12,21 @@ function check(){
 }
 
 function add(){
-    $('#js-shopping-list-form').submit(event => {
+    $('form').submit(event => {
         // this stops the default form submission behavior
         event.preventDefault();
-        console.log('worked');
+        //get input value
+        let input = $('input').val();
+        //make a copy of li
+        let base = "<li>" + $('ul li:first').html() + "</li>";
+        //append the item
+        $('ul').append(base);
+        //change item to match the added one
+        $('ul li:last').find('.shopping-item').text(input);
     });  
 }
 
 
 $(del);
 $(check);
+$(add);
