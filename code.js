@@ -1,17 +1,15 @@
-//delete item
-function del() {
-    $('.shopping-item-delete').click(function (event) {
+
+(function () {
+    //delete item
+    $(document).on('click', '.shopping-item-delete', function () {
+        console.log($(this));
         $(this).closest('li').remove();
     });
-}
-//check off item
-function check(){
-    $('.shopping-item-toggle').click(function(event){
+    //check item
+    $(document).on('click', '.shopping-item-toggle', function (event) {
         $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
     });
-}
-
-function add(){
+    //add item
     $('form').submit(event => {
         // this stops the default form submission behavior
         event.preventDefault();
@@ -23,10 +21,6 @@ function add(){
         $('ul').append(base);
         //change item to match the added one
         $('ul li:last').find('.shopping-item').text(input);
-    });  
-}
+    });
 
-
-$(del);
-$(check);
-$(add);
+})();
